@@ -26,7 +26,7 @@ const getProject = async function (req, res) {
     const project = await Project.findById(req.params.id);
 
     if (!project) {
-        throw new NotFoundError(`No job with id ${jobId}`)
+        throw new NotFoundError(`No project with id ${req.params.id}`)
       }
       res.status(StatusCodes.OK).json({ project })
 }
