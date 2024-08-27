@@ -1,0 +1,441 @@
+openapi: 3.0.0
+info:
+  title: Task Tracker
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+  variables: {}
+paths:
+  /task-tracker:
+    get:
+      tags:
+      - Task Tracker
+      summary: Get All Task Tracker
+      operationId: GetAllTaskTracker
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+    post:
+      tags:
+      - Task Tracker
+      summary: Create Task Tracker
+      operationId: CreateTaskTracker
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateTaskTrackerRequest'
+              - {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /task-tracker/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The task tracker ID.
+    patch:
+      tags:
+      - Task Tracker
+      summary: Update Task Tracker
+      operationId: UpdateTaskTracker
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateTaskTrackerRequest'
+              - {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+    delete:
+      tags:
+      - Task Tracker
+      summary: Delete Task Tracker
+      operationId: DeleteTaskTracker
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /task-tracker/{taskTrackerID}:
+    parameters:
+      - in: path
+        name: taskTrackerID
+        schema:
+          type: string
+        required: true
+        description: The task tracker ID.
+    get:
+      tags:
+      - Task Tracker
+      summary: Get Task Tracker
+      operationId: GetTaskTracker
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /auth/register:
+    post:
+      tags:
+      - Authentication
+      summary: Auth Register
+      operationId: AuthRegister
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AuthRegisterRequest'
+              - {}
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /auth:
+    post:
+      tags:
+      - Authentication
+      summary: Auth Login
+      operationId: AuthLogin
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AuthLoginRequest'
+              - example:
+                  email: user@gmail.com
+                  password: password
+            example:
+              email: user@gmail.com
+              password: password
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /project:
+    get:
+      tags:
+      - Projects
+      summary: Get All Projects
+      operationId: GetAllProjects
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+    post:
+      tags:
+      - Projects
+      summary: Create Project
+      operationId: CreateProject
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateProjectRequest'
+              - example:
+                  name: Project John Mobile
+                  description: Project About Logistics
+            example:
+              name: Project John Mobile
+              description: Project About Logistics
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /project/{projectId}:
+    parameters:
+      - in: path
+        name: projectId
+        schema:
+          type: string
+        required: true
+        description: The project ID.
+    get:
+      tags:
+      - Projects
+      summary: Get Project By Id
+      operationId: GetProjectById
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /project/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The project Id.
+    delete:
+      tags:
+      - Projects
+      summary: Delete Project
+      operationId: DeleteProject
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+  /project/{projectIds}:
+    parameters:
+      - in: path
+        name: projectIds
+        schema:
+          type: string
+        required: true
+        description: The project Id.
+    patch:
+      tags:
+      - Projects
+      summary: Update Project
+      operationId: UpdateProject
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateProjectRequest'
+              - example:
+                  name: Project Iphone
+                  description: All about Iphone Company
+            example:
+              name: Project Iphone
+              description: All about Iphone Company
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: https://zero6-jobs-api-5ipc.onrender.com/api/v1
+        variables: {}
+components:
+  schemas:
+    CreateTaskTrackerRequest:
+      title: CreateTaskTrackerRequest
+      allOf:
+      - $ref: '#/components/schemas/UpdateProjectRequest'
+      - required:
+        - title
+        - description
+        - assignedTo
+        - projectId
+        type: object
+        properties:
+          title:
+            type: string
+          description:
+            type: string
+          assignedTo:
+            type: string
+          projectId:
+            type: string
+    UpdateTaskTrackerRequest:
+      title: UpdateTaskTrackerRequest
+      allOf:
+      - $ref: '#/components/schemas/CreateTaskTrackerRequest'
+      - required:
+        - title
+        - description
+        - assignedTo
+        - projectId
+        - status
+        - periority
+        type: object
+        properties:
+          title:
+            type: string
+          description:
+            type: string
+          assignedTo:
+            type: string
+          projectId:
+            type: string
+          status:
+            type: string
+            example: "pending, \nin-progress,\ncompleted"
+          periority:
+            type: string
+            example: >-
+              high,
+
+              medium ,
+
+              low
+    AuthRegisterRequest:
+      title: AuthRegisterRequest
+      required:
+      - name
+      - email
+      - password
+      - role
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+          example: "user, \nadmin"
+    AuthLoginRequest:
+      title: AuthLoginRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: user@gmail.com
+        password: password
+    CreateProjectRequest:
+      title: CreateProjectRequest
+      allOf:
+      - $ref: '#/components/schemas/UpdateProjectRequest'
+      - required:
+        - name
+        - description
+        type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+        example:
+          name: Project John Mobile
+          description: Project About Logistics
+      example:
+        name: Project John Mobile
+        description: Project About Logistics
+    UpdateProjectRequest:
+      title: UpdateProjectRequest
+      required:
+      - name
+      - description
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      example:
+        name: Project Iphone
+        description: All about Iphone Company
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Authentication
+  description: ''
+- name: Projects
+  description: ''
+- name: Task Tracker
+  description: ''
+
