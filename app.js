@@ -17,6 +17,7 @@ const swaggerDocument = YAML.load('./swagger.yaml');
 const authRoute = require('./routes/auth');
 const projectRoute = require('./routes/project');
 const taskTrackerRoute = require('./routes/task-tracker');
+const userRoute = require('./routes/user');
 
 // error handler
 const notFoundMiddleware = require('./middleware/not-found');
@@ -26,7 +27,7 @@ app.set('trust proxy', 1);
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    max: 2000, // limit each IP to 100 requests per windowMs
   })
 );
 app.use(express.json());
@@ -40,9 +41,11 @@ app.use(express.json());
 const connectDB = require('./db/connect');
 const authenticateUser = require('./middleware/authentication');
 
+app.use(express.static("public"));
+
 // routes
 app.get('/', (req, res) => {
-  res.send('<h1>TASK TRACKER API</h1><a href="/api-docs">Documentation</a>');
+  // res.send('<h1>TASK TRACKER API</h1><a href="/api-docs">Documentation</a>');
 });
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
@@ -50,6 +53,7 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/task-tracker', authenticateUser, taskTrackerRoute);
 app.use('/api/v1/project', authenticateUser, projectRoute);
+app.use('/api/v1/user', authenticateUser, userRoute);
 
 
 app.use(notFoundMiddleware);

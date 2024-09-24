@@ -32,8 +32,8 @@ const getAllTaskTracker = async function (req, res) {
 }
 
 const getTaskTracker = async function (req, res) {
-    const taskTracker = await TaskTracker.find({_id:req.params.id});
-    return res.status(StatusCodes.OK).json({status: true, data: taskTracker});
+    const taskTracker = await TaskTracker.findById(req.params.id);
+    return res.status(StatusCodes.OK).json({taskTracker});
 }
 
 const updateTaskTracker = async function (req, res) {

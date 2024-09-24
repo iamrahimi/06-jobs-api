@@ -1,0 +1,277 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Task Tracker: Sign in</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <section id="menubar" style="display: none;">
+    <nav>
+      <ul class="menuItems">
+        <li><a href='#' data-item='Home' id="home">Home</a></li>
+        <li><a href='#' data-item='Projects' id="project">Projects</a></li>
+        <li><a href='#' data-item='LOG OUT' id="logout">LOG OUT</a></li>
+      </ul>
+    </nav>
+  
+  </section>
+    <div class="container" id="task-tracker"  >
+        
+        <p id="message"></p>
+        <hr />
+        <div id="login-register" style="display:none;">
+            <button type="button" id="logon">logon</button>
+            <!-- <button type="button" id="register">register</button> -->
+          </div>
+    </div>
+
+  <div class="login-root" id="login-div" style="display:none;">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+          <h1><a href="#" rel="dofollow">Welcome to Task Tracker</a></h1>
+        </div>
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+              <span class="padding-bottom--15">Sign in to your account</span>
+              <form id="stripe-login" >
+                <div class="field padding-bottom--24">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email">
+                  <label for="email" id="email-login-error-label" class="errors"></label>
+                </div>
+                <div class="field padding-bottom--24">
+                  <div class="grid--50-50">
+                    <label for="password">Password</label>
+                  </div>
+                  <input type="password" name="password" id="password">
+                  <label for="password" id="password-login-error-lable" class="errors"></label>
+                </div>
+                <div class="field padding-bottom--24">
+                  <input type="button" value="Login" id="login-button">
+                  <input type="button" value="Cancel" id="login-cancel" style="background-color: brown;">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="footer-link padding-top--24">
+            <span>Don't have an account? <a href="#" id="register">Sign up</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-root" id="register-div" style="display:none;">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+        <div class="formbg-outer">
+          <div class="formbg">
+            <div class="formbg-inner padding-horizontal--48">
+              <span class="padding-bottom--15">Register your account</span>
+              <form id="stripe-login" >
+
+                <div class="field padding-bottom--24">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                    <label for="name" id="name-error-label" class="errors"></label>
+                </div>
+
+                <div class="field padding-bottom--24">
+                  <label for="email-register">Email</label>
+                  <input type="email" name="email" id="email-register" required>
+                  <label for="email-register" id="email-register-error-label" class="errors"></label>
+                </div>
+
+                <span class="padding-bottom--15">User role</span>
+
+                <div class="field field-checkbox padding-bottom--24 flex-flex align-center" style="float: left; padding-right: 10px;">
+                    <label for="checkbox">
+                      <input type="radio" checked value="user" name="user-role"> User
+                    </label>
+                </div>
+                <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                    <label for="checkbox">
+                      <input type="radio" value="admin" name="user-role"> Admin
+                    </label>
+                </div>
+
+                <div class="field padding-bottom--24">
+                  <div class="grid--50-50">
+                    <label for="password-register">Password</label>
+                  </div>
+                  <input type="password" name="password" id="password-register" required>
+                  <label for="password-register" id="password-register-error-label" class="errors"></label>
+                </div>
+
+                <div class="field padding-bottom--24">
+                    <div class="grid--50-50">
+                      <label for="confirm-password">Confirm passowrd</label>
+                    </div>
+                    <input type="password" name="confirm-password" id="confirm-password">
+                </div>
+
+                <div class="field padding-bottom--24">
+                  <input type="button" value="Register" id="register-button">
+                  <input type="button" value="Cancel" id="register-cancel" style="background-color: brown;">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="task-tracker-list" style="display:none;" >
+    <div >
+      <h2>TASK TRACKER RECORD</h2>
+      <button class="button new-task-button" id="add-task-tracker">New Task</button>
+    </div>
+    <table id="task-tracker-table">
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>PRIORITY</th>
+            <th>CREATED AT</th>
+            <th>STATUS</th>
+            <th> ACTION</th>
+          </tr>
+        <thead>
+        <tbody id="task-tracker-table-body">
+          <tr>
+            <td rowspan="7">No recard available.</td>
+          </tr>
+             
+        </tbody>
+    </table>
+  </div>
+
+  <div class="container" id="project-list" style="display:none;" >
+    <div >
+      <h2>PROJECT LIST</h2>
+      <button class="button new-task-button" id="add-project">NEW PROJECT</button>
+    </div>
+    <table id="project-table">
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>CREATED AT</th>
+            <th>ACTION</th>
+          </tr>
+        <thead>
+        <tbody id="project-table-body">
+          <tr>
+            <td rowspan="5">No recard available.</td>
+          </tr>
+             
+        </tbody>
+    </table>
+  </div>
+
+  <div class="background" id="new-task-div" style="display: none;">
+    <div class="container">
+      <div class="screen">
+        <div class="screen-header">
+          <div class="screen-header-left">
+            <div class="screen-header-button close"></div>
+            <div class="screen-header-button maximize"></div>
+            <div class="screen-header-button minimize"></div>
+          </div>
+          <div class="screen-header-right">
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+          </div>
+        </div>
+        <div class="screen-body">
+          <div class="screen-body-item left">
+            <div class="app-title">
+              <span>NEW TASK</span>
+              <span>TRACKER</span>
+              <div id="task-tracker-validation-error"></div>
+            </div>
+            
+          </div>
+          <div class="screen-body-item">
+            <div class="app-form">
+              <div class="app-form-group">
+                <input class="app-form-control" placeholder="TITLE" name="title" value="" id="title">
+              </div>
+              <div class="app-form-group">
+                <input class="app-form-control" placeholder="DESCRIPTION" name="description" id="description">
+              </div>
+              <div class="app-form-group">
+                <select id="assigned-to" name="assignedTo">
+                  <option value="testin">Ali</option>
+                </select>
+              </div>
+              <div class="app-form-group message">
+                <select name="projectId" id="project-id">
+                  <option>PROJECT ONE</option>
+                </select>
+              </div>
+              <div class="app-form-group buttons">
+                <button class="app-form-button" id="task-tracker-cancel">CANCEL</button>
+                <button class="app-form-button" id="adding-task-tracker">SAVE TASK TRACKER</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="background" id="new-project-div" style="display: none;">
+    <div class="container">
+      <div class="screen">
+        <div class="screen-header">
+          <div class="screen-header-left">
+            <div class="screen-header-button close"></div>
+            <div class="screen-header-button maximize"></div>
+            <div class="screen-header-button minimize"></div>
+          </div>
+          <div class="screen-header-right">
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+            <div class="screen-header-ellipsis"></div>
+          </div>
+        </div>
+        <div class="screen-body">
+          <div class="screen-body-item left">
+            <div class="app-title">
+              <span>NEW </span>
+              <span>PROJECT</span>
+              <div id="project-validation-error"></div>
+            </div>
+          </div>
+          <div class="screen-body-item">
+            <div class="app-form">
+              <div class="app-form-group">
+                <input class="app-form-control" placeholder="TITLE" name="project-name" value="" id="project-name">
+              </div>
+              <div class="app-form-group">
+                <input class="app-form-control" placeholder="DESCRIPTION" name="project-description" id="project-description">
+              </div>
+              <div class="app-form-group buttons">
+                <button class="app-form-button" id="project-cancel">CANCEL</button>
+                <button class="app-form-button" id="adding-project">SAVE PROJECT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script src="./index.js" type="module"></script>
+
+</html>

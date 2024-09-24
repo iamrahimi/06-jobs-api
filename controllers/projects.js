@@ -23,7 +23,7 @@ const getAllProjects = async function (req, res) {
     const limit = Number(req.query.limit) || 10;
     const skip = (page - 1) * limit;
     const project = await Project.find({ owner: req.user.userId }).skip(skip).limit(limit);
-    res.status(StatusCodes.CREATED).json({status: true, data: project}); 
+    res.status(StatusCodes.OK).json({status: true, data: project}); 
 }
 
 const getProject = async function (req, res) {
